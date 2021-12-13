@@ -1,7 +1,6 @@
 import java.util.Scanner;
 
-public class BaiTap_3 {
-
+public class BaiTap_10 {
     static final int MIN = -50;
     static final int MAX = 50;
 
@@ -9,14 +8,7 @@ public class BaiTap_3 {
         Scanner scanner = new Scanner(System.in);
         int[][] arr = taoMangHaiChieuNgauNhien(scanner);
         inMang(arr);
-        int soDuongDauTien = timSoDuongDauTien(arr);
-
-        System.out.println();
-
-        if (soDuongDauTien == 0)
-            System.out.println("Mảng không có bất kỳ số dương nào");
-        else
-            System.out.println(soDuongDauTien);
+        lietKeCacDongCoSoAm(arr);
     }
 
     public static int nhapSoDong(Scanner scanner) {
@@ -31,8 +23,8 @@ public class BaiTap_3 {
         return col;
     }
 
-    public static boolean kiemTraSoDongCot(int soDong, int soCot) {
-        return soDong >= 1 && soCot >= 1;
+    public static boolean kiemTraSoDongCot(int row, int col) {
+        return row >= 1 && col >= 1;
     }
 
     public static int[][] taoMangHaiChieuNgauNhien(Scanner scanner) {
@@ -61,15 +53,22 @@ public class BaiTap_3 {
         }
     }
 
-    public static int timSoDuongDauTien(int[][] arr) {
-        int soDuongDauTien;
+    public static void lietKeCacDongCoSoAm(int[][] arr) {
+        int[] temp = new int[arr.length];
+
         for (int i = 0; i < arr.length; i++) {
             for (int j = 0; j < arr[0].length; j++) {
-                if (arr[i][j] > 0) {
-                    return soDuongDauTien = arr[i][j];
+                if (arr[i][j] < 0) {
+                    temp[i]++;
+                    continue;
                 }
             }
         }
-        return soDuongDauTien = 0;
+
+        System.out.print("\nCác dòng có chứa giá trị âm là ");
+        for (int i = 0; i < arr.length; i++) {
+            if (temp[i] > 0)
+                System.out.print(i + " ");
+        }
     }
 }

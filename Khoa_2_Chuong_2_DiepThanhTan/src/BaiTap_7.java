@@ -1,22 +1,24 @@
 import java.util.Scanner;
 
-public class BaiTap_3 {
-
-    static final int MIN = -50;
-    static final int MAX = 50;
+public class BaiTap_7 {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        int[][] arr = taoMangHaiChieuNgauNhien(scanner);
+        int[][] arr = taoMangHaiChieu(scanner);
         inMang(arr);
-        int soDuongDauTien = timSoDuongDauTien(arr);
 
         System.out.println();
+        int colChoice;
+        do {
+            System.out.print("Nhập vị trí cột kiểm tra giảm dần ");
+            colChoice = Integer.parseInt(scanner.nextLine());
+        } while (colChoice >= arr[0].length || colChoice < 0);
 
-        if (soDuongDauTien == 0)
-            System.out.println("Mảng không có bất kỳ số dương nào");
+        if (giamDan(arr, colChoice))
+            System.out.println("Cột " + colChoice + " giảm dần");
         else
-            System.out.println(soDuongDauTien);
+            System.out.println("Cột " + colChoice + " không giảm dần");
+
     }
 
     public static int nhapSoDong(Scanner scanner) {
@@ -31,11 +33,11 @@ public class BaiTap_3 {
         return col;
     }
 
-    public static boolean kiemTraSoDongCot(int soDong, int soCot) {
-        return soDong >= 1 && soCot >= 1;
+    public static boolean kiemTraSoDongCot(int row, int col) {
+        return row >= 1 && col >= 1;
     }
 
-    public static int[][] taoMangHaiChieuNgauNhien(Scanner scanner) {
+    public static int[][] taoMangHaiChieu(Scanner scanner) {
         int row, col;
 
         do {
@@ -46,7 +48,7 @@ public class BaiTap_3 {
         int[][] arr = new int[row][col];
         for (int i = 0; i < row; i++) {
             for (int j = 0; j < col; j++) {
-                arr[i][j] = MIN + (int) (Math.random() * ((MAX - MIN) + 1));
+                arr[i][j] = Integer.parseInt(scanner.nextLine());
             }
         }
         return arr;
@@ -61,15 +63,11 @@ public class BaiTap_3 {
         }
     }
 
-    public static int timSoDuongDauTien(int[][] arr) {
-        int soDuongDauTien;
-        for (int i = 0; i < arr.length; i++) {
-            for (int j = 0; j < arr[0].length; j++) {
-                if (arr[i][j] > 0) {
-                    return soDuongDauTien = arr[i][j];
-                }
-            }
+    public static boolean giamDan(int[][] arr, int colChoice) {
+        for (int i = 0; i < arr.length - 1; i++) {
+            if(arr[i][colChoice] < arr[i + 1][colChoice])
+                return false;
         }
-        return soDuongDauTien = 0;
+        return true;
     }
 }

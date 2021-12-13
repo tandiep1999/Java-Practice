@@ -2,21 +2,14 @@ import java.util.Scanner;
 
 public class BaiTap_1 {
 
-    static final int MIN = -100;
-    static final int MAX = 100;
+    static final int MIN = -50;
+    static final int MAX = 50;
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         int[][] arr = taoMangHaiChieuNgauNhien(scanner);
         inMang(arr);
-        int soChanDauTien = timSoChanDauTien(arr);
 
-        System.out.println();
-
-        if (soChanDauTien == 0)
-            System.out.println("Mảng không có bất kỳ số chẵn nào");
-        else
-            System.out.println(soChanDauTien);
     }
 
     public static int nhapSoDong(Scanner scanner) {
@@ -31,9 +24,18 @@ public class BaiTap_1 {
         return col;
     }
 
+    public static boolean kiemTraSoDongCot(int soDong, int soCot) {
+        return soDong >= 1 && soCot >= 1;
+    }
+
     public static int[][] taoMangHaiChieuNgauNhien(Scanner scanner) {
-        int row = nhapSoDong(scanner);
-        int col = nhapSoCot(scanner);
+        int row, col;
+
+        do {
+            row = nhapSoDong(scanner);
+            col = nhapSoCot(scanner);
+        } while (!kiemTraSoDongCot(row, col));
+
         int[][] arr = new int[row][col];
         for (int i = 0; i < row; i++) {
             for (int j = 0; j < col; j++) {

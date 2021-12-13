@@ -1,7 +1,6 @@
 import java.util.Scanner;
 
-public class BaiTap_3 {
-
+public class BaiTap_8 {
     static final int MIN = -50;
     static final int MAX = 50;
 
@@ -9,14 +8,7 @@ public class BaiTap_3 {
         Scanner scanner = new Scanner(System.in);
         int[][] arr = taoMangHaiChieuNgauNhien(scanner);
         inMang(arr);
-        int soDuongDauTien = timSoDuongDauTien(arr);
-
-        System.out.println();
-
-        if (soDuongDauTien == 0)
-            System.out.println("Mảng không có bất kỳ số dương nào");
-        else
-            System.out.println(soDuongDauTien);
+        tongMotDong(arr);
     }
 
     public static int nhapSoDong(Scanner scanner) {
@@ -31,8 +23,8 @@ public class BaiTap_3 {
         return col;
     }
 
-    public static boolean kiemTraSoDongCot(int soDong, int soCot) {
-        return soDong >= 1 && soCot >= 1;
+    public static boolean kiemTraSoDongCot(int row, int col) {
+        return row >= 1 && col >= 1;
     }
 
     public static int[][] taoMangHaiChieuNgauNhien(Scanner scanner) {
@@ -61,15 +53,15 @@ public class BaiTap_3 {
         }
     }
 
-    public static int timSoDuongDauTien(int[][] arr) {
-        int soDuongDauTien;
+    public static void tongMotDong(int[][] arr) {
+        int result;
+
         for (int i = 0; i < arr.length; i++) {
+            result = 0;
             for (int j = 0; j < arr[0].length; j++) {
-                if (arr[i][j] > 0) {
-                    return soDuongDauTien = arr[i][j];
-                }
+                result += arr[i][j];
             }
+            System.out.println("Tổng dòng " + i + " là " + result);
         }
-        return soDuongDauTien = 0;
     }
 }
