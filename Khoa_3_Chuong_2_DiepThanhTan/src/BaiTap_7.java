@@ -1,8 +1,6 @@
 import java.util.Scanner;
 
-public class BaiTap_4 {
-    //Đề bài: Tìm số nguyên tố cuối cùng trong mảng. Nếu ko có số nguyên tố thì trả về -1
-    // ==> Duyệt từ cuối mảng
+public class BaiTap_7 {
     static final int MIN = -100;
     static final int MAX = 100;
 
@@ -13,10 +11,17 @@ public class BaiTap_4 {
         inMang(arr);
         System.out.println();
 
-        if (timViTriSoNguyenToCuoiCung(arr) == -1)
-            System.out.println("Mảng không có bất kỳ số nguyên tố nào");
+        int giaTriDuoi, giaTriTren;
+        do {
+            System.out.println("Hãy nhập giá trị dưới và trên (giá trị dưới x phải nhỏ hơn giá trị trên y)");
+            giaTriDuoi = nhapGiaTriDuoi(scanner);
+            giaTriTren = nhapGiaTriTren(scanner);
+        } while(!(giaTriDuoi < giaTriTren));
+        int x = search(arr, giaTriDuoi, giaTriTren);
+        if (x == -1)
+            System.out.println("Mảng không có phần tử nào nằm trong đoạn [" + giaTriDuoi + "," + giaTriTren + "]");
         else
-            System.out.println("Số nguyên tố cuối cùng tại vị trí " + timViTriSoNguyenToCuoiCung(arr));
+            System.out.println("Giá trị đầu tiên trong mảng nằm trong khoảng [" + giaTriDuoi + "," + giaTriTren + "] là " + x);
     }
 
     public static int nhapChieuDaiMang(Scanner scanner) {
@@ -47,23 +52,23 @@ public class BaiTap_4 {
         }
     }
 
-    public static boolean kiemTraSoNguyenTo(int n) {
-        if (n < 2)
-            return false;
-
-        for (int i = 2; i < Math.sqrt(n); i++) {
-            if (n % i == 0)
-                return false;
-        }
-        return true;
+    public static int nhapGiaTriDuoi(Scanner scanner) {
+        System.out.print("Nhập giá trị dưới x: ");
+        int x = Integer.parseInt(scanner.nextLine());
+        return x;
     }
 
-    public static int timViTriSoNguyenToCuoiCung(int[] arr) {
-        for (int i = arr.length - 1; i >= 0; i--) {
-            if (kiemTraSoNguyenTo(arr[i]))
-                return i;
-        }
+    public static int nhapGiaTriTren(Scanner scanner) {
+        System.out.print("Nhập giá trị trên y: ");
+        int y = Integer.parseInt(scanner.nextLine());
+        return y;
+    }
 
+    public static int search(int[] arr, int giaTriDuoi, int giaTriTren) {
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] >= giaTriDuoi && arr[i] <= giaTriTren)
+                return arr[i];
+        }
         return -1;
     }
 }

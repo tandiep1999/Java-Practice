@@ -58,24 +58,21 @@ public class BaiTap_3 {
     }
 
     public static void timGiaTriDuongNhoNhat(int[] arr) {
-        int giaTriDuongNhoNhat = arr[timViTriDuongDauTien(arr)];
-        int[] temp = new int[arr.length];
+        int viTriDuongDauTien = timViTriDuongDauTien(arr);
+        int giaTriDuongNhoNhat = arr[viTriDuongDauTien];
+        int viTriDuongNhoNhat = 0;
 
         // Tìm giá trị dương nào là nhỏ nhất
-        for (int i = timViTriDuongDauTien(arr); i < arr.length; i++) {
-            if (arr[i] > 0 && arr[i] < giaTriDuongNhoNhat)
+        for (int i = viTriDuongDauTien; i < arr.length; i++) {
+            if (arr[i] > 0 && arr[i] < giaTriDuongNhoNhat) {
                 giaTriDuongNhoNhat = arr[i];
+                viTriDuongNhoNhat = i;
+            }
         }
 
         //Tìm các vị trí mà tại đó giá trị = với giá trị dương nhỏ nhất
-        for (int i = timViTriDuongDauTien(arr); i < arr.length; i++) {
-            if (arr[i] > 0 && arr[i] <= giaTriDuongNhoNhat)
-                temp[i]++;
-        }
-
-        //In các giá trị dương nhỏ nhất
-        for (int i = timViTriDuongDauTien(arr); i < arr.length; i++) {
-            if (temp[i] > 0)
+        for (int i = viTriDuongNhoNhat; i < arr.length; i++) {
+            if (arr[i] > 0 && arr[i] == giaTriDuongNhoNhat)
                 System.out.print(i + " ");
         }
     }

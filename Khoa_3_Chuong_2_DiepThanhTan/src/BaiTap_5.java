@@ -1,8 +1,6 @@
 import java.util.Scanner;
 
-public class BaiTap_4 {
-    //Đề bài: Tìm số nguyên tố cuối cùng trong mảng. Nếu ko có số nguyên tố thì trả về -1
-    // ==> Duyệt từ cuối mảng
+public class BaiTap_5 {
     static final int MIN = -100;
     static final int MAX = 100;
 
@@ -12,11 +10,9 @@ public class BaiTap_4 {
         int[] arr = taoMangNgauNhien(nhapChieuDaiMang(scanner));
         inMang(arr);
         System.out.println();
-
-        if (timViTriSoNguyenToCuoiCung(arr) == -1)
-            System.out.println("Mảng không có bất kỳ số nguyên tố nào");
-        else
-            System.out.println("Số nguyên tố cuối cùng tại vị trí " + timViTriSoNguyenToCuoiCung(arr));
+        System.out.print("Nhập x: ");
+        int x = Integer.parseInt(scanner.nextLine());
+        timGiaTriGanNhat(tinhKhoangCach(arr, x), arr);
     }
 
     public static int nhapChieuDaiMang(Scanner scanner) {
@@ -47,23 +43,30 @@ public class BaiTap_4 {
         }
     }
 
-    public static boolean kiemTraSoNguyenTo(int n) {
-        if (n < 2)
-            return false;
-
-        for (int i = 2; i < Math.sqrt(n); i++) {
-            if (n % i == 0)
-                return false;
+    public static int[] tinhKhoangCach(int[] arr, int x) {
+        int[] khoangCach = new int[arr.length];
+        for (int i = 0; i < arr.length; i++) {
+            khoangCach[i] = Math.abs(arr[i] - x);
         }
-        return true;
+        return khoangCach;
     }
 
-    public static int timViTriSoNguyenToCuoiCung(int[] arr) {
-        for (int i = arr.length - 1; i >= 0; i--) {
-            if (kiemTraSoNguyenTo(arr[i]))
-                return i;
+    public static void timGiaTriGanNhat(int[] khoangCach, int[] arr) {
+        int khoangCachNhoNhat = khoangCach[0];
+        int viTriGanNhat = 0;
+        int[] temp = new int[khoangCach.length];
+
+        for (int i = 1; i < khoangCach.length; i++) {
+            if (khoangCach[i] < khoangCachNhoNhat) {
+                khoangCachNhoNhat = khoangCach[i];
+                viTriGanNhat = i;
+            }
         }
 
-        return -1;
+        for (int i = viTriGanNhat; i < khoangCach.length; i++) {
+            if (khoangCach[i] == khoangCachNhoNhat) {
+                System.out.print(arr[i] + " ");
+            }
+        }
     }
 }

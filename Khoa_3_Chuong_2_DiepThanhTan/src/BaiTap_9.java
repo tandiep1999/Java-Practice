@@ -1,8 +1,8 @@
 import java.util.Scanner;
 
-public class BaiTap_4 {
-    //Đề bài: Tìm số nguyên tố cuối cùng trong mảng. Nếu ko có số nguyên tố thì trả về -1
-    // ==> Duyệt từ cuối mảng
+public class BaiTap_9 {
+    //Đề bài: Tìm số nguyên tố nhỏ nhất lớn hơn tất cả mọi giá trị có trong mảng
+    // Tức là tìm số nguyên tố nhỏ nhất lớn hơn giá trị lớn nhất trong mảng
     static final int MIN = -100;
     static final int MAX = 100;
 
@@ -12,11 +12,7 @@ public class BaiTap_4 {
         int[] arr = taoMangNgauNhien(nhapChieuDaiMang(scanner));
         inMang(arr);
         System.out.println();
-
-        if (timViTriSoNguyenToCuoiCung(arr) == -1)
-            System.out.println("Mảng không có bất kỳ số nguyên tố nào");
-        else
-            System.out.println("Số nguyên tố cuối cùng tại vị trí " + timViTriSoNguyenToCuoiCung(arr));
+        search(timSoLonNhat(arr));
     }
 
     public static int nhapChieuDaiMang(Scanner scanner) {
@@ -58,12 +54,21 @@ public class BaiTap_4 {
         return true;
     }
 
-    public static int timViTriSoNguyenToCuoiCung(int[] arr) {
-        for (int i = arr.length - 1; i >= 0; i--) {
-            if (kiemTraSoNguyenTo(arr[i]))
-                return i;
+    public static int timSoLonNhat(int[] arr) {
+        int soLonNhat = arr[0];
+        for (int i = 1; i < arr.length; i++) {
+            if (arr[i] > soLonNhat)
+                soLonNhat = arr[i];
         }
+        return soLonNhat;
+    }
 
-        return -1;
+    public static void search(int soLonNhat) {
+        for (int i = soLonNhat + 1; ; i++) {
+            if(kiemTraSoNguyenTo(i)) {
+                System.out.println("Số nguyên tố nhỏ nhất mà lớn hơn mọi giá trị trong mảng là " + i);
+                break;
+            }
+        }
     }
 }
