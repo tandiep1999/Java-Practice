@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/Java-Practice.iml" filepath="$PROJECT_DIR$/.idea/Java-Practice.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Khoa_1_Chuong_4_DiepThanhTan/Khoa_1_Chuong_4_DiepThanhTan.iml" filepath="$PROJECT_DIR$/Khoa_1_Chuong_4_DiepThanhTan/Khoa_1_Chuong_4_DiepThanhTan.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Khoa_1_Chuong_5_DiepThanhTan/Khoa_1_Chuong_5_DiepThanhTan.iml" filepath="$PROJECT_DIR$/Khoa_1_Chuong_5_DiepThanhTan/Khoa_1_Chuong_5_DiepThanhTan.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Khoa_2_Chuong_2_DiepThanhTan/Khoa_2_Chuong_2_DiepThanhTan.iml" filepath="$PROJECT_DIR$/Khoa_2_Chuong_2_DiepThanhTan/Khoa_2_Chuong_2_DiepThanhTan.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Khoa_3_Chuong_2_DiepThanhTan/Khoa_3_Chuong_2_DiepThanhTan.iml" filepath="$PROJECT_DIR$/Khoa_3_Chuong_2_DiepThanhTan/Khoa_3_Chuong_2_DiepThanhTan.iml" />
+    </modules>
+  </component>
+</project>
